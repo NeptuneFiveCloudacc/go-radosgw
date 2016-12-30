@@ -72,8 +72,8 @@ type stats struct {
 	Bucket      string `json:"bucket"`
 	BucketQuota struct {
 		Enabled    bool `json:"enabled"`
-		MaxObjects int  `json:"max_objects"`
-		MaxSizeKb  int  `json:"max_size_kb"`
+		MaxObjects float64  `json:"max_objects"`
+		MaxSizeKb  float64  `json:"max_size_kb"`
 	} `json:"bucket_quota"`
 	ID        string `json:"id"`
 	IndexPool string `json:"index_pool"`
@@ -85,9 +85,9 @@ type stats struct {
 	Pool      string `json:"pool"`
 	Usage     struct {
 		RgwMain struct {
-			NumObjects   int `json:"num_objects"`
-			SizeKb       int `json:"size_kb"`
-			SizeKbActual int `json:"size_kb_actual"`
+			NumObjects   float64 `json:"num_objects"`
+			SizeKb       float64 `json:"size_kb"`
+			SizeKbActual float64 `json:"size_kb_actual"`
 		} `json:"rgw.main"`
 	} `json:"usage"`
 	Ver string `json:"ver"`

@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"time"
 
-	"github.com/QuentinPerez/go-encodeUrl"
+	"github.com/megamsys/go-radosgw/encodeUrl"
 )
 
 // UsageConfig usage request
@@ -452,7 +452,8 @@ type BucketConfig struct {
 //@UID
 //@Stats
 //
-func (api *API) GetBucket(conf BucketConfig) (Buckets, error) {
+
+func (api *API) GetBuckets(conf BucketConfig) (Buckets, error) {
 	var (
 		ret     = Buckets{}
 		values  = url.Values{}
@@ -464,11 +465,13 @@ func (api *API) GetBucket(conf BucketConfig) (Buckets, error) {
 	if len(errs) > 0 {
 		return nil, errs[0]
 	}
+
 	values.Add("format", "json")
 	body, _, err := api.call("GET", "/bucket", values, true)
 	if err != nil {
 		return nil, err
 	}
+
 	if err = json.Unmarshal(body, &variant); err != nil {
 		return nil, err
 	}
