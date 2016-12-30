@@ -1,5 +1,5 @@
 package radosAPI
-
+/*
 import (
 	"os"
 	"testing"
@@ -586,3 +586,4 @@ func TestRemoveSubUserWithoutSubUID(t *testing.T) {
 		So(err, ShouldBeNil)
 	})
 }
+*/
