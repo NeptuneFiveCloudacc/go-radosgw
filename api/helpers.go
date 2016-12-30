@@ -5,7 +5,7 @@ import (
 	"errors"
 	"net/url"
 	"time"
-  "fmt"
+
 	"github.com/megamsys/go-radosgw/encodeUrl"
 )
 
@@ -463,16 +463,15 @@ func (api *API) GetBuckets(conf BucketConfig) (Buckets, error) {
 
 	values, errs = encurl.Translate(conf)
 	if len(errs) > 0 {
-		fmt.Println(values,"***************",errs)
 		return nil, errs[0]
 	}
-	fmt.Println("**************",values)
+
 	values.Add("format", "json")
 	body, _, err := api.call("GET", "/bucket", values, true)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println("Body   :", string(body))
+
 	if err = json.Unmarshal(body, &variant); err != nil {
 		return nil, err
 	}
