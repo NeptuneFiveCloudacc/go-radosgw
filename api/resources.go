@@ -100,3 +100,7 @@ type bucket struct {
 
 // Buckets represents the response of bucket requests
 type Buckets []bucket
+
+// Users respresents the response of user requests
+
+type Users []User 
