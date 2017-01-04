@@ -7,6 +7,7 @@ import (
 	"time"
 
 	"github.com/megamsys/go-radosgw/encodeUrl"
+	"fmt"
 )
 
 // UsageConfig usage request
@@ -18,6 +19,7 @@ type UsageConfig struct {
 	ShowSummary bool       `url:"show-summary,ifBoolIsFalse"` // Specifies whether data summary should be returned
 	RemoveAll   bool       `url:"remove-all,ifBoolIsTrue"`    // Required when uid is not specified, in order to acknowledge multi user data removal.
 }
+
 
 // GetUsage requests bandwidth usage information.
 //
@@ -91,6 +93,7 @@ func (api *API) GetUser(uid ...string) (*User, error) {
 	if len(uid) != 0 {
 		values.Add("uid", uid[0])
 	}
+
 	body, _, err := api.call("GET", "/user", values, true)
 	if err != nil {
 		return nil, err
@@ -100,6 +103,7 @@ func (api *API) GetUser(uid ...string) (*User, error) {
 	}
 	return ret, nil
 }
+
 
 // UserConfig user request
 type UserConfig struct {
@@ -470,6 +474,10 @@ func (api *API) GetBuckets(conf BucketConfig) (Buckets, error) {
 	body, _, err := api.call("GET", "/bucket", values, true)
 	if err != nil {
 		return nil, err
+	}
+
+	if len(body) < 3  {
+    return nil, fmt.Errorf("no buckets avail")
 	}
 
 	if err = json.Unmarshal(body, &variant); err != nil {
