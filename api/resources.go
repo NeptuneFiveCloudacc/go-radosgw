@@ -71,9 +71,9 @@ type User struct {
 type stats struct {
 	Bucket      string `json:"bucket"`
 	BucketQuota struct {
-		Enabled    bool `json:"enabled"`
-		MaxObjects float64  `json:"max_objects"`
-		MaxSizeKb  float64  `json:"max_size_kb"`
+		Enabled    bool    `json:"enabled"`
+		MaxObjects float64 `json:"max_objects"`
+		MaxSizeKb  float64 `json:"max_size_kb"`
 	} `json:"bucket_quota"`
 	ID        string `json:"id"`
 	IndexPool string `json:"index_pool"`
@@ -103,4 +103,4 @@ type Buckets []bucket
 
 // Users respresents the response of user requests
 
-type Users []User 
+type Users []User

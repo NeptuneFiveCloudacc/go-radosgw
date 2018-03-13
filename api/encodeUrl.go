@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/megamsys/go-radosgw/encodeUrl"
+	"github.com/virtengine/go-radosgw/encodeUrl"
 )
 
 func init() {
